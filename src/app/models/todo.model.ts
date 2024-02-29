@@ -1,6 +1,7 @@
 export interface ITodo{
     name:string,
     status:ISTATUS
+    important:boolean
     
 }
 

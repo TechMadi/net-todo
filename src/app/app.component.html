@@ -1,72 +1,38 @@
-<div class=" text-secondary font-serif  h-screen">
+<div class=" text-secondary font-serif ">
 
   <!--  Todo Heading -->
   <div class="container  ">
 
-    <div class="header flex  my-10 justify-center items-center space-x-4 ">
+    <div class="header flex  my-5 justify-center items-center space-x-4 ">
       <lucide-icon name="check-circle-2" [size]="48" fill="#000" [strokeWidth]="0"></lucide-icon>
       <h1 class="text-3xl my-auto">Todo App</h1>
     </div>
     <div class="tasks">
       <div class="todos ">
-        <h1 class="text-3xl my-auto">Important</h1>
-        <div
-          class="todo-item flex justify-between items-center bg-gray-100 px-2 py-2 rounded-md border-transparent border-2 transition-all duration-75 hover:bg-opacity-50 ">
+        <h1 class="text-2xl my-4">Important</h1>
+        @for (todo of todos; track $index) {
 
-          <div class="description flex justify-start">
-            <div class="icon">
-              <button class="rounded-full bg-lightGray text-white p-1 text-xs my-2"> <lucide-icon size="16"
-                  name="check"></lucide-icon> </button>
-            </div>
-            <div class="item  my-2 mx-4">
-              <p>Age</p>
-            </div>
+          @if (todo.important) {
+            <app-todo-item [todo]="todo" ></app-todo-item>
+          }
+  
+        }
+       
+        <h1 class="text-2xl my-4">Tasks</h1>
+        @for (todo of todos; track $index) {
 
-          </div>
+          @if (!todo.important) {
+            <app-todo-item [todo]="todo" ></app-todo-item>
+          }
+  
+        }
 
-          <div class="icons flex justify-start">
-            <div>
-              <button
-                class="rounded-md bg-transparent text-yellow-500 p-2  my-2  hover:bg-gray-800 hover:bg-opacity-10">
-                <lucide-icon size="16" name="star" class="fill-yellow-500"></lucide-icon> </button>
-            </div>
-            <div class="relative p-2" id="modalContainer">
-              <button class="rounded-md text-yellow-500 p-2 my-2 hover:bg-gray-800 hover:bg-opacity-10"
-                (click)="toggleModal()">
-                <lucide-icon size="16" name="more-horizontal" class="fill-yellow-500"></lucide-icon>
-              </button>
-              <div class="flex flex-col absolute right-0 mt-2 w-60 bg-white shadow-md rounded-md" id="modalMenu"
-                [ngClass]="showModal=== false?'hidden':'flex'">
-                <button class=" flex justify-start px-4 py-4 mx-0.5  text-darkGray text-opacity-90   hover:bg-gray-300 hover:text-grey-400">
-                  <span class="mx-2 my-auto"><lucide-icon size="20" name="pencil" fill="#1e212f"></lucide-icon> </span>
-                  <span class="mx-2"> Edit Task</span></button>
-                <button class=" flex justify-start px-4 py-4 mx-0.5  text-darkGray text-opacity-90   hover:bg-gray-300 hover:text-grey-400">
-                  <span class="mx-2 my-auto"><lucide-icon size="20" name="check-circle-2" fill="#1e212f"></lucide-icon>
-                  </span> <span class="mx-2"> Mark as completed</span></button>
-                <button
-                  class=" flex justify-start px-4 py-4 mx-0.5  bg-transparent text-darkGray text-opacity-90 hover:bg-gray-300 hover:text-grey-400  ">
-                  <span class="mx-2 my-auto"><lucide-icon size="20" name="star" fill="#1e212f"></lucide-icon> </span>
-                  <span class="mx-2"> Remove importance</span></button>
-                <button class=" flex justify-start px-4 py-4 mx-0.5  text-red-500   hover:bg-gray-300 hover:text-grey-400">
-                  <span class="mx-2 my-auto"><lucide-icon size="20" name="trash-2" fill="#1e212f"></lucide-icon> </span>
-                  <span class="mx-2"> Delete Task</span></button>
-
-              </div>
-            </div>
-
-
+        <div class="mt-auto">
+          <div class="todo-form  bottom-8 space-x-4 w-screen my-4">
+            <app-add-todo></app-add-todo>
           </div>
         </div>
-        <h2>Tasks</h2>
-
-
-
-        <div class="todo-form  fixed bottom-8">
-          <form action="">
-            <input type="text">
-            <button>Add</button>
-          </form>
-        </div>
+       
 
       </div>
     </div>

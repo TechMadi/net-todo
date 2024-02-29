@@ -1,8 +1,10 @@
 import { Component } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { RouterOutlet } from '@angular/router';
-import { LucideAngularComponent, LucideAngularModule, LucideComponent } from 'lucide-angular';
+import {  LucideAngularModule} from 'lucide-angular';
 import { ISTATUS, ITodo } from './models/todo.model';
+import { TodoItemComponent } from './components/todo-item/todo-item.component';
+import { AddTodoComponent } from './components/add-todo/add-todo.component';
 
 
 
@@ -10,30 +12,42 @@ import { ISTATUS, ITodo } from './models/todo.model';
 @Component({
   selector: 'app-root',
   standalone: true,
-  imports: [CommonModule, RouterOutlet,LucideAngularModule],
+  imports: [CommonModule, RouterOutlet,LucideAngularModule,TodoItemComponent,AddTodoComponent],
   templateUrl: './app.component.html',
   styleUrl: './app.component.css'
 })
 export class AppComponent {
   title = 'net-todo';
-  showModal:boolean=true;
+  state=ISTATUS
 
   todos:ITodo[]=[
     {
       name:"Test Todo",
-      status:ISTATUS.INCOMPLETE
+      status:ISTATUS.INCOMPLETE,
+      important:false
     },
     {
       name:"Test 2",
-      status:ISTATUS.INCOMPLETE
+      status:ISTATUS.COMPLETED,
+      important:true
     },
     {
       name:"Test 3",
-      status:ISTATUS.INCOMPLETE
+      status:ISTATUS.INCOMPLETE,
+      important:true
+    },
+    {
+      name:"Test 4",
+      status:ISTATUS.COMPLETED,
+      important:false
+    },
+
+    {
+      name:"Test 5",
+      status:ISTATUS.COMPLETED,
+      important:false
     },
   ]
 
-  toggleModal():void{
-    this.showModal=!this.showModal
-  }
+ 
 }

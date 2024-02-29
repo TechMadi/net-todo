@@ -1,1 +1,54 @@
-<p>todo-item works!</p>
+<div
+    class="todo-item my-2 flex justify-between items-center bg-gray-100 px-2 py-2 rounded-md border-transparent border-2 transition-all duration-75 hover:bg-opacity-50 ">
+
+    <div class="description flex justify-start">
+        <div class="icon">
+            <button class="rounded-full p-1 text-xs my-2"
+                [ngClass]="todo.status === 'IN COMPLETED'?'bg-transparent text-lightGray':'bg-lightGray text-white' "> <lucide-icon size="16"
+                    [name]="todo.status==='IN COMPLETED'?'circle': 'check'"></lucide-icon> </button>
+        </div>
+        <div class="item  my-2 mx-4">
+            <p>{{todo.name}}</p>
+          
+        </div>
+
+    </div>
+
+    <div class="icons flex justify-start">
+        <div>
+            <button class="rounded-md bg-transparent p-2  my-2  hover:bg-gray-800 hover:bg-opacity-10" [ngClass]="todo.important?' text-yellow-500':' text-gray-900'">
+                <lucide-icon size="16" name="star" [ngClass]="todo.important?' fill-yellow-500':' fill-gray-900'"></lucide-icon> </button>
+        </div>
+        <div class="relative " id="modalContainer">
+            <button class="rounded-md text-yellow-500 p-2 my-2 hover:bg-gray-800 hover:bg-opacity-10"
+                (click)="toggleModal()">
+                <lucide-icon size="16" name="more-horizontal" class="fill-yellow-500"></lucide-icon>
+            </button>
+            <div class="flex flex-col absolute right-0 mt-2 w-60 bg-white shadow-md rounded-md" id="modalMenu"
+                [ngClass]="showModal=== false?'hidden':'flex'">
+                <button
+                    class=" flex justify-start px-4 py-4 mx-0.5  text-darkGray text-opacity-90   hover:bg-gray-300 hover:text-grey-400">
+                    <span class="mx-2 my-auto"><lucide-icon size="20" name="pencil" fill="#1e212f"></lucide-icon>
+                    </span>
+                    <span class="mx-2"> Edit Task</span></button>
+                <button
+                    class=" flex justify-start px-4 py-4 mx-0.5  text-darkGray text-opacity-90   hover:bg-gray-300 hover:text-grey-400">
+                    <span class="mx-2 my-auto"><lucide-icon size="20" name="check-circle-2"
+                            fill="#1e212f"></lucide-icon>
+                    </span> <span class="mx-2"> Mark as completed</span></button>
+                <button
+                    class=" flex justify-start px-4 py-4 mx-0.5  bg-transparent text-darkGray text-opacity-90 hover:bg-gray-300 hover:text-grey-400  ">
+                    <span class="mx-2 my-auto"><lucide-icon size="20" name="star" fill="#1e212f"></lucide-icon> </span>
+                    <span class="mx-2"> Remove importance</span></button>
+                <button
+                    class=" flex justify-start px-4 py-4 mx-0.5  text-red-500   hover:bg-gray-300 hover:text-grey-400">
+                    <span class="mx-2 my-auto"><lucide-icon size="20" name="trash-2" fill="#1e212f"></lucide-icon>
+                    </span>
+                    <span class="mx-2"> Delete Task</span></button>
+
+            </div>
+        </div>
+
+
+    </div>
+</div>

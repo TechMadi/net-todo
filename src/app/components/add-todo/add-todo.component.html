@@ -1,0 +1,7 @@
+<form action="" class="w-11/12 mx-auto flex justify-start" [formGroup]="addTodoForm">
+    <input formControlName="todo" type="text" class="w-9/12 px-2 py-2  rounded-l-md border-2 border-transparent outline-none  focus:border-darkGray focus:border-2" placeholder="What do you need to do">
+    <button class="px-2 py-2 bg-darkGray  text-center  text-base text-white w-fit rounded-r-md  flex  disabled:bg-opacity-50" [disabled]="addTodoForm.invalid">
+        <lucide-icon name="plus"></lucide-icon>
+         <span>Add  New</span>
+        </button>
+  </form>
